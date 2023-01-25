@@ -33,9 +33,13 @@ namespace BeginnerAIProto
         {
 
         }
-        public void UpdateCube(Color[][,] wholecubearray, GameTime g)
+        public void UpdateCube( GameTime g)
         {
-            if (started && wholecubearray == solvedcube)//cubeorientationfront[0,0] == gFace[0,0])//&& cubeorientationdown==yFace && cubeorientationleft== oFace)
+            wholecube = new Color[6][,]
+            {
+                cubeorientationfront,cubeorientationback,cubeorientationup,cubeorientationdown,cubeorientationright,cubeorientationleft
+            };
+            if (started && wholecube == solvedcube)//cubeorientationfront[0,0] == gFace[0,0])//&& cubeorientationdown==yFace && cubeorientationleft== oFace)
             {
                 finishgame = true;
             }
@@ -57,10 +61,7 @@ namespace BeginnerAIProto
 
                 Thread.Sleep(150);
             }
-            wholecube = new Color[6][,]
-            {
-                cubeorientationfront,cubeorientationback,cubeorientationup,cubeorientationdown,cubeorientationright,cubeorientationleft
-            };
+            
 
 
         }

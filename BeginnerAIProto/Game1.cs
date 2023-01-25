@@ -99,7 +99,7 @@ namespace BeginnerAIProto
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
+            cube.UpdateCube(gameTime);
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
@@ -149,7 +149,12 @@ namespace BeginnerAIProto
                 }
             }
             //beginner ai codes
-            if (Keyboard.GetState().IsKeyDown(Keys.Q))
+            if (Keyboard.GetState().IsKeyDown(Keys.D1))
+            {
+                cube.Turn(1);
+                Thread.Sleep(100);
+            }
+                if (Keyboard.GetState().IsKeyDown(Keys.Q))
             {
                 if (cube.cubeorientationfront[1, 1] != Color.Green || cube.cubeorientationup[1, 1] != Color.Yellow)//if (wholecube[0][1, 1] != Color.Blue || wholecube[2][1, 1] != Color.Yellow)
                 {
@@ -165,7 +170,7 @@ namespace BeginnerAIProto
 
                 for (int z = 0; z <= 5; z++)//5 is storedarray.Length
                 {
-                    for (int i = 0; i < 4; i++)//4 is edges.getupperbound
+                    for (int i = 0; i < 3; i++)//4 is edges.getupperbound
                     {
                         if (cube.wholecube[z][edges[i, 0], edges[i, 1]] == Color.White)//check all edges of faces to see if the are white
                         {
@@ -205,7 +210,7 @@ namespace BeginnerAIProto
                                         }
                                         break;
                                     case 2:
-                                        if (cube.cubeorientationleft[0, 1] == Color.Red)
+                                        if (cube.cubeorientationleft[1, 0] == Color.Red)
                                         {
                                             cube.Turn(7);
                                             Thread.Sleep(150);
@@ -250,13 +255,10 @@ namespace BeginnerAIProto
                                             Thread.Sleep(150);
                                             cube.Turn(7);
                                             Thread.Sleep(150);
-                                            cube.Turn(6);
+                                            cube.Turn(3);
                                             Thread.Sleep(150);
-                                            cube.Turn(5);
-                                            Thread.Sleep(150);
-                                            cube.Turn(7);
-                                            Thread.Sleep(150);
-                                            cube.Turn(7);
+                                            cube.Turn(50);
+                                           
                                             solvetextstring += "776577";
                                             solvedstringlist.Add(7);
                                             solvedstringlist.Add(7);
@@ -326,15 +328,9 @@ namespace BeginnerAIProto
                                     case 3:
                                         if (cube.cubeorientationfront[1, 2] == Color.Red)
                                         {
-                                            cube.Turn(10);
+                                            cube.Turn(50);
                                             Thread.Sleep(150);
-                                            cube.Turn(6);
-                                            Thread.Sleep(150);
-                                            cube.Turn(5);
-                                            Thread.Sleep(150);
-                                            cube.Turn(7);
-                                            Thread.Sleep(150);
-                                            cube.Turn(7);
+                                           
 
                                             solvedstringlist.Add(6);
                                             solvedstringlist.Add(6);
@@ -414,7 +410,7 @@ namespace BeginnerAIProto
                                         }
                                         break;
                                     case 2:
-                                        if (cube.cubeorientationfront[0, 1] == Color.Red)
+                                        if (cube.cubeorientationfront[1, 0] == Color.Red)
                                         {
                                             cube.Turn(5);
                                             Thread.Sleep(150);
@@ -432,15 +428,10 @@ namespace BeginnerAIProto
                                         if (cube.cubeorientationback[1, 2] == Color.Red)
                                         {
                                             //rotate cube up down
-                                            cube.YTurn();
+                                            
+                                            cube.Turn(20);
                                             Thread.Sleep(150);
-                                            cube.YTurn();
-                                            Thread.Sleep(150);
-                                            cube.Turn(5);
-                                            Thread.Sleep(150);
-                                            cube.YTurn();
-                                            Thread.Sleep(150);
-                                            cube.YTurn();
+                                            
 
                                             solvedstringlist.Add(5);
 
@@ -451,15 +442,12 @@ namespace BeginnerAIProto
                                     case 4:
                                         if (cube.cubeorientationdown[2, 1] == Color.Red)
                                         {
-                                            cube.Turn(4);
+                                            cube.Turn(50);
                                             Thread.Sleep(150);
-                                            cube.Turn(3);
-                                            Thread.Sleep(150);
-                                            cube.Turn(5);
+                                            cube.Turn(6);
                                             Thread.Sleep(150);
                                             cube.Turn(7);
-                                            Thread.Sleep(150);
-                                            cube.Turn(7);
+                                            
 
                                             solvedstringlist.Add(4);
                                             solvedstringlist.Add(3);
@@ -473,15 +461,12 @@ namespace BeginnerAIProto
                                     case 5:
                                         if (cube.cubeorientationdown[0, 1] == Color.Red)
                                         {
-                                            cube.Turn(8);
+                                            cube.Turn(20);
                                             Thread.Sleep(150);
                                             cube.Turn(6);
                                             Thread.Sleep(150);
-                                            cube.Turn(5);
-                                            Thread.Sleep(150);
                                             cube.Turn(7);
-                                            Thread.Sleep(150);
-                                            cube.Turn(7);
+                                            
                                             solvedstringlist.Add(8);
                                             solvedstringlist.Add(6);
                                             solvedstringlist.Add(5);
@@ -502,15 +487,12 @@ namespace BeginnerAIProto
                                     case 0:
                                         if (cube.cubeorientationright[0, 1] == Color.Red)
                                         {
-                                            cube.Turn(4);
+                                            cube.Turn(6);
                                             Thread.Sleep(150);
-                                            cube.Turn(5);
-                                            Thread.Sleep(150);
-                                            cube.Turn(5);
+                                            cube.Turn(6);
                                             Thread.Sleep(150);
                                             cube.Turn(7);
-                                            Thread.Sleep(150);
-                                            cube.Turn(7);
+                                            
                                             solvedstringlist.Add(4);
                                             solvedstringlist.Add(5);
                                             solvedstringlist.Add(5);
@@ -551,17 +533,10 @@ namespace BeginnerAIProto
                                     case 3:
                                         if (cube.cubeorientationright[1, 2] == Color.Red)
                                         {
-                                            cube.Turn(4);
+                                            cube.Turn(50);
                                             Thread.Sleep(150);
-                                            cube.Turn(4);
-                                            Thread.Sleep(150);
-                                            cube.Turn(5);
-                                            Thread.Sleep(150);
-                                            cube.Turn(5);
-                                            Thread.Sleep(150);
-                                            cube.Turn(7);
-                                            Thread.Sleep(150);
-                                            cube.Turn(7);
+                                            cube.Turn(50);
+                                            
                                             solvedstringlist.Add(4);
                                             solvedstringlist.Add(4);
                                             solvedstringlist.Add(5);
@@ -592,13 +567,10 @@ namespace BeginnerAIProto
                                     case 5:
                                         if (cube.cubeorientationfront[0, 1] == Color.Red)
                                         {
-                                            cube.Turn(6);
+                                            cube.Turn(3);
                                             Thread.Sleep(150);
-                                            cube.Turn(5);
-                                            Thread.Sleep(150);
-                                            cube.Turn(7);
-                                            Thread.Sleep(150);
-                                            cube.Turn(7);
+                                            cube.Turn(50);
+                                          
                                             solvedstringlist.Add(6);
                                             solvedstringlist.Add(5);
                                             solvedstringlist.Add(7);
