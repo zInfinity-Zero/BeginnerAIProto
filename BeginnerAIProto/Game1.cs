@@ -398,9 +398,9 @@ namespace BeginnerAIProto
                                     case 1:
                                         if (cube.cubeorientationdown[1, 2] == Color.Red)
                                         {
-                                            cube.Turn(5);
+                                            cube.Turn(50);
                                             Thread.Sleep(150);
-                                            cube.Turn(5);
+                                            cube.Turn(50);
                                             Thread.Sleep(150);
                                             cube.Turn(6);
                                             Thread.Sleep(150);
